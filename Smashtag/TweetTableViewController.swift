@@ -152,15 +152,23 @@ class TweetTableViewController: UITableViewController, UITextFieldDelegate {
         return true
     }
     */
-
-    /*
+    
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
+        var destination = segue.destinationViewController as? UIViewController
+        if let navCon = destination as? UINavigationController{
+            destination = navCon.visibleViewController
+        }
+        var source = sender as? TweetTableViewCell
+        if let mvc = destination as? MentionsTableViewController {
+            if let identifier = segue.identifier {
+                if identifier == "detail"
+                {
+                    mvc.tweet = source?.tweet
+                }
+            }
+        }
     }
-    */
 
 }
