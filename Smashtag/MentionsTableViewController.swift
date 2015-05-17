@@ -101,25 +101,8 @@ class MentionsTableViewController: UITableViewController {
         let item = things[indexPath.section][indexPath.row]
         switch item {
         case .Image(let image):
-            let cell = tableView.dequeueReusableCellWithIdentifier("image", forIndexPath: indexPath) as! UITableViewCell
-            let url = image.url
-                let qos = Int(QOS_CLASS_USER_INITIATED.value)
-                dispatch_async(dispatch_get_global_queue(qos, 0)) { () -> Void in
-                    let imageData = NSData(contentsOfURL: url)
-                    dispatch_async(dispatch_get_main_queue()) {
-                        if url == image.url {
-                            if imageData != nil {
-                                cell.imageView?.image = UIImage(data: imageData!)
-                                cell.textLabel?.hidden = true
-                                cell.layoutSubviews()
-                                cell.setNeedsDisplay()
-                                
-                            } else {
-                                cell.imageView?.image = nil
-                            }
-                        }
-                    }
-                }
+            let cell = tableView.dequeueReusableCellWithIdentifier("image", forIndexPath: indexPath) as! TweetImageTableViewCell
+                cell.imageUrl = image.url
                 return cell
 
             
@@ -135,7 +118,7 @@ class MentionsTableViewController: UITableViewController {
         let item = things[indexPath.section][indexPath.row]
         switch item {
         case .Image(let image):
-            return tableView.bounds.size.width / CGFloat(image.aspectRatio) / 2
+            return tableView.bounds.size.width / CGFloat(image.aspectRatio)
         default:
             return UITableViewAutomaticDimension
         }

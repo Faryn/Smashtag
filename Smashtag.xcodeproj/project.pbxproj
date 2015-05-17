@@ -19,6 +19,7 @@
 		DA2A76CD1AED41F90054FEA4 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2A76C91AED41F90054FEA4 /* User.swift */; };
 		DA2A76CF1AED57710054FEA4 /* TweetTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2A76CE1AED57710054FEA4 /* TweetTableViewCell.swift */; };
 		DA2A76D31AF2CF880054FEA4 /* MentionsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2A76D21AF2CF880054FEA4 /* MentionsTableViewController.swift */; };
+		DAF6070F1B0935370025BC9F /* TweetImageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAF6070E1B0935370025BC9F /* TweetImageTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +49,7 @@
 		DA2A76C91AED41F90054FEA4 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		DA2A76CE1AED57710054FEA4 /* TweetTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweetTableViewCell.swift; sourceTree = "<group>"; };
 		DA2A76D21AF2CF880054FEA4 /* MentionsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MentionsTableViewController.swift; sourceTree = "<group>"; };
+		DAF6070E1B0935370025BC9F /* TweetImageTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweetImageTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +92,7 @@
 			isa = PBXGroup;
 			children = (
 				DA2A76D21AF2CF880054FEA4 /* MentionsTableViewController.swift */,
+				DAF6070E1B0935370025BC9F /* TweetImageTableViewCell.swift */,
 				DA2A76C51AED41F90054FEA4 /* Twitter */,
 				DA2A76A71AED396E0054FEA4 /* Main.storyboard */,
 				DA2A76CE1AED57710054FEA4 /* TweetTableViewCell.swift */,
@@ -239,6 +242,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DA2A76D31AF2CF880054FEA4 /* MentionsTableViewController.swift in Sources */,
+				DAF6070F1B0935370025BC9F /* TweetImageTableViewCell.swift in Sources */,
 				DA2A76C41AED39F90054FEA4 /* TweetTableViewController.swift in Sources */,
 				DA2A76CC1AED41F90054FEA4 /* TwitterRequest.swift in Sources */,
 				DA2A76CD1AED41F90054FEA4 /* User.swift in Sources */,
@@ -443,6 +447,7 @@
 				DA2A76BF1AED396E0054FEA4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		DA2A76C01AED396E0054FEA4 /* Build configuration list for PBXNativeTarget "SmashtagTests" */ = {
 			isa = XCConfigurationList;
@@ -451,6 +456,7 @@
 				DA2A76C21AED396E0054FEA4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

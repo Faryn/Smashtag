@@ -143,31 +143,36 @@
                                             <exclude reference="nsA-66-bXl"/>
                                             <exclude reference="OUS-dM-UcY"/>
                                         </mask>
+                                        <mask key="constraints">
+                                            <exclude reference="Az4-LL-23O"/>
+                                        </mask>
                                     </variation>
                                 </tableViewCellContentView>
                             </tableViewCell>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="image" textLabel="PHO-0J-LoK" style="IBUITableViewCellStyleDefault" id="K3W-KS-v9c">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="image" rowHeight="90" id="K3W-KS-v9c" customClass="TweetImageTableViewCell" customModule="Smashtag" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="K3W-KS-v9c" id="0UH-TX-rca">
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Cci-xr-a4p">
-                                            <rect key="frame" x="75" y="0.0" width="600" height="43"/>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="1HS-IS-vWp">
+                                            <rect key="frame" x="8" y="0.0" width="584" height="81"/>
                                         </imageView>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="PHO-0J-LoK">
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
+                                        <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="hGI-ht-qHu">
+                                            <rect key="frame" x="290" y="35" width="20" height="20"/>
+                                        </activityIndicatorView>
                                     </subviews>
-                                    <variation key="default">
-                                        <mask key="subviews">
-                                            <exclude reference="Cci-xr-a4p"/>
-                                        </mask>
-                                    </variation>
+                                    <constraints>
+                                        <constraint firstItem="1HS-IS-vWp" firstAttribute="top" secondItem="0UH-TX-rca" secondAttribute="top" id="Ow1-Dj-Amw"/>
+                                        <constraint firstItem="1HS-IS-vWp" firstAttribute="leading" secondItem="0UH-TX-rca" secondAttribute="leadingMargin" id="Q13-0i-zCo"/>
+                                        <constraint firstItem="1HS-IS-vWp" firstAttribute="centerX" secondItem="0UH-TX-rca" secondAttribute="centerX" id="gZA-vZ-s99"/>
+                                        <constraint firstItem="1HS-IS-vWp" firstAttribute="bottom" secondItem="0UH-TX-rca" secondAttribute="bottomMargin" id="ojP-Nh-sWY"/>
+                                    </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="spinner" destination="hGI-ht-qHu" id="l9O-Qw-wS9"/>
+                                    <outlet property="tweetImageView" destination="1HS-IS-vWp" id="lyu-ib-m1x"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>

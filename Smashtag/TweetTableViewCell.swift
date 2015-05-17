@@ -9,7 +9,7 @@
 import UIKit
 
 class TweetTableViewCell: UITableViewCell {
-
+    
     var tweet: Tweet? {
         didSet {
             updateUI()
@@ -25,7 +25,7 @@ class TweetTableViewCell: UITableViewCell {
         tweetScreenNameLabel?.text = nil
         tweetProfileImageView?.image = nil
         //tweetCreatedLabel?.text = nil
-    
+        
         if let tweet = self.tweet {
             var text = NSMutableAttributedString(string: tweet.text)
             
@@ -39,17 +39,25 @@ class TweetTableViewCell: UITableViewCell {
                 text.addAttribute(NSForegroundColorAttributeName, value: UIColor.purpleColor(), range: h.nsrange)
             }
             tweetTextLabel?.attributedText = text
-//            if tweetTextLabel?.text != nil {
-//                for _ in tweet.media {
-//                    tweetTextLabel.text! += " 📷"
-//                }
-//            }
+            //            if tweetTextLabel?.text != nil {
+            //                for _ in tweet.media {
+            //                    tweetTextLabel.text! += " 📷"
+            //                }
+            //            }
             
             tweetScreenNameLabel?.text = "\(tweet.user)"
             
             if let profileImageURL = tweet.user.profileImageURL {
-                if let imageData = NSData(contentsOfURL: profileImageURL) {
-                    tweetProfileImageView?.image = UIImage(data: imageData)
+                let qos = Int(QOS_CLASS_USER_INITIATED.value)
+                dispatch_async(dispatch_get_global_queue(qos, 0)) { () -> Void in
+                    let imageData = NSData(contentsOfURL: profileImageURL)
+                    dispatch_async(dispatch_get_main_queue()) {
+                        if imageData != nil {
+                            self.tweetProfileImageView?.image = UIImage(data: imageData!)
+                        } else {
+                            self.tweetProfileImageView?.image = nil
+                        }
+                    }
                 }
             }
         }
