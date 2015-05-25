@@ -9,7 +9,7 @@
 import UIKit
 
 class TweetImageTableViewCell: UITableViewCell {
-
+    
     var imageUrl : NSURL? {
         didSet {
             tweetImage = nil
@@ -17,9 +17,9 @@ class TweetImageTableViewCell: UITableViewCell {
         }
     }
     
-
+    
     @IBOutlet weak var spinner: UIActivityIndicatorView!
-
+    
     @IBOutlet weak var tweetImageView: UIImageView! {
         didSet {
             setNeedsDisplay()
@@ -32,6 +32,7 @@ class TweetImageTableViewCell: UITableViewCell {
             tweetImageView.image = newValue
             tweetImageView.sizeToFit()
             spinner?.stopAnimating()
+            spinner.hidden = true
         }
     }
     

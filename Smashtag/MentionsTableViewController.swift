@@ -35,10 +35,11 @@ class MentionsTableViewController: UITableViewController {
         }
     }
     
-    private var things = [[Thing]]()
+    private var things  = [[Thing]]()
     
     var tweet : Tweet? {
         didSet {
+            title = tweet?.user.name
             if let newTweet = tweet {
                 if !newTweet.media.isEmpty {
                     var items = [Thing]()
@@ -127,6 +128,18 @@ class MentionsTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return things[section].first?.title
     }
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let item = things[indexPath.section][indexPath.row]
+        switch item {
+        case .Url(let url):
+            UIApplication.sharedApplication().openURL(NSURL(string: url.keyword)!)
+        case .Image(let image):
+            break
+        default:
+            performSegueWithIdentifier("search", sender: tableView.cellForRowAtIndexPath(indexPath))
+        }
+    }
 
     /*
     // Override to support conditional editing of the table view.
@@ -163,14 +176,22 @@ class MentionsTableViewController: UITableViewController {
     }
     */
 
-    /*
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
+        var destination = segue.destinationViewController as? UIViewController
+        if let navCon = destination as? UINavigationController{
+            destination = navCon.visibleViewController
+        }
+        var source = sender as? UITableViewCell
+        if let tvc = destination as? TweetTableViewController {
+            if let identifier = segue.identifier {
+                if identifier == "search"
+                {
+                    tvc.searchText = source?.textLabel?.text
+                }
+            }
+        }
     }
-    */
 
 }
