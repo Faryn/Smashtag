@@ -157,11 +157,11 @@ class TweetTableViewController: UITableViewController, UITextFieldDelegate {
     // MARK: - Navigation
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        var destination = segue.destinationViewController as? UIViewController
+        var destination = segue.destinationViewController as UIViewController
         if let navCon = destination as? UINavigationController{
-            destination = navCon.visibleViewController
+            destination = navCon.visibleViewController!
         }
-        var source = sender as? TweetTableViewCell
+        let source = sender as? TweetTableViewCell
         if let mvc = destination as? MentionsTableViewController {
             if let identifier = segue.identifier {
                 if identifier == "detail"

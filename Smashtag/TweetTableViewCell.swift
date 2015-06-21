@@ -27,7 +27,7 @@ class TweetTableViewCell: UITableViewCell {
         //tweetCreatedLabel?.text = nil
         
         if let tweet = self.tweet {
-            var text = NSMutableAttributedString(string: tweet.text)
+            let text = NSMutableAttributedString(string: tweet.text)
             
             for h in tweet.hashtags {
                 text.addAttribute(NSForegroundColorAttributeName, value: UIColor.lightGrayColor(), range: h.nsrange)
@@ -48,7 +48,7 @@ class TweetTableViewCell: UITableViewCell {
             tweetScreenNameLabel?.text = "\(tweet.user)"
             
             if let profileImageURL = tweet.user.profileImageURL {
-                let qos = Int(QOS_CLASS_USER_INITIATED.value)
+                let qos = Int(QOS_CLASS_USER_INITIATED.rawValue)
                 dispatch_async(dispatch_get_global_queue(qos, 0)) { () -> Void in
                     let imageData = NSData(contentsOfURL: profileImageURL)
                     dispatch_async(dispatch_get_main_queue()) {

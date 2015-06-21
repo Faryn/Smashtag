@@ -20,6 +20,7 @@
 		DA2A76CF1AED57710054FEA4 /* TweetTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2A76CE1AED57710054FEA4 /* TweetTableViewCell.swift */; };
 		DA2A76D31AF2CF880054FEA4 /* MentionsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2A76D21AF2CF880054FEA4 /* MentionsTableViewController.swift */; };
 		DAF6070F1B0935370025BC9F /* TweetImageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAF6070E1B0935370025BC9F /* TweetImageTableViewCell.swift */; };
+		DAF607111B1B81000025BC9F /* ImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAF607101B1B81000025BC9F /* ImageViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +51,7 @@
 		DA2A76CE1AED57710054FEA4 /* TweetTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweetTableViewCell.swift; sourceTree = "<group>"; };
 		DA2A76D21AF2CF880054FEA4 /* MentionsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MentionsTableViewController.swift; sourceTree = "<group>"; };
 		DAF6070E1B0935370025BC9F /* TweetImageTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweetImageTableViewCell.swift; sourceTree = "<group>"; };
+		DAF607101B1B81000025BC9F /* ImageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,6 +97,7 @@
 				DAF6070E1B0935370025BC9F /* TweetImageTableViewCell.swift */,
 				DA2A76C51AED41F90054FEA4 /* Twitter */,
 				DA2A76A71AED396E0054FEA4 /* Main.storyboard */,
+				DAF607101B1B81000025BC9F /* ImageViewController.swift */,
 				DA2A76CE1AED57710054FEA4 /* TweetTableViewCell.swift */,
 				DA2A76C31AED39F90054FEA4 /* TweetTableViewController.swift */,
 				DA2A76A11AED396D0054FEA4 /* Supporting Files */,
@@ -185,7 +188,8 @@
 		DA2A76961AED396D0054FEA4 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0630;
+				LastSwiftUpdateCheck = 0700;
+				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = "Paul Pfeiffer";
 				TargetAttributes = {
 					DA2A769D1AED396D0054FEA4 = {
@@ -243,6 +247,7 @@
 			files = (
 				DA2A76D31AF2CF880054FEA4 /* MentionsTableViewController.swift in Sources */,
 				DAF6070F1B0935370025BC9F /* TweetImageTableViewCell.swift in Sources */,
+				DAF607111B1B81000025BC9F /* ImageViewController.swift in Sources */,
 				DA2A76C41AED39F90054FEA4 /* TweetTableViewController.swift in Sources */,
 				DA2A76CC1AED41F90054FEA4 /* TwitterRequest.swift in Sources */,
 				DA2A76CD1AED41F90054FEA4 /* User.swift in Sources */,
@@ -312,6 +317,7 @@
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -380,6 +386,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = Smashtag/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "Paul-Pfeiffer.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -390,6 +397,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = Smashtag/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "Paul-Pfeiffer.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -408,6 +416,7 @@
 				);
 				INFOPLIST_FILE = SmashtagTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "Paul-Pfeiffer.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Smashtag.app/Smashtag";
 			};
@@ -423,6 +432,7 @@
 				);
 				INFOPLIST_FILE = SmashtagTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "Paul-Pfeiffer.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Smashtag.app/Smashtag";
 			};

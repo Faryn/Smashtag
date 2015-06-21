@@ -108,7 +108,7 @@ class MentionsTableViewController: UITableViewController {
 
             
         default:
-            let cell = tableView.dequeueReusableCellWithIdentifier("text", forIndexPath: indexPath) as! UITableViewCell
+            let cell = tableView.dequeueReusableCellWithIdentifier("text", forIndexPath: indexPath) as UITableViewCell
             cell.textLabel?.text = item.content
             return cell
         }
@@ -134,7 +134,7 @@ class MentionsTableViewController: UITableViewController {
         switch item {
         case .Url(let url):
             UIApplication.sharedApplication().openURL(NSURL(string: url.keyword)!)
-        case .Image(let image):
+        case .Image( _):
             break
         default:
             performSegueWithIdentifier("search", sender: tableView.cellForRowAtIndexPath(indexPath))
@@ -179,19 +179,29 @@ class MentionsTableViewController: UITableViewController {
     // MARK: - Navigation
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        var destination = segue.destinationViewController as? UIViewController
+        var destination = segue.destinationViewController as UIViewController
         if let navCon = destination as? UINavigationController{
-            destination = navCon.visibleViewController
+            destination = navCon.visibleViewController!
         }
-        var source = sender as? UITableViewCell
-        if let tvc = destination as? TweetTableViewController {
-            if let identifier = segue.identifier {
-                if identifier == "search"
-                {
-                    tvc.searchText = source?.textLabel?.text
+        if let identifier = segue.identifier {
+            switch identifier {
+            case "search":
+                let source = sender as? UITableViewCell
+                if let ttvc = destination as? TweetTableViewController {
+                    ttvc.searchText = source?.textLabel?.text
                 }
+            case "image":
+                let source = sender as? TweetImageTableViewCell
+                if let ivc = destination as? ImageViewController {
+                    ivc.image = source?.tweetImage
+                    print(source?.description, appendNewline: false)
+                }
+            default:break
             }
+            
+            
         }
     }
+    
 
 }

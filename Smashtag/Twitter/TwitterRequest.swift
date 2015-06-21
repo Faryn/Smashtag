@@ -116,31 +116,29 @@ public class TwitterRequest
     // handler is not necessarily called on the main queue
     
     func performTwitterRequest(method: SLRequestMethod, handler: (PropertyList?) -> Void) {
-        var jsonExtension = (self.requestType.rangeOfString(JSONExtension) == nil) ? JSONExtension : ""
+        let jsonExtension = (self.requestType.rangeOfString(JSONExtension) == nil) ? JSONExtension : ""
         let request = SLRequest(
             forServiceType: SLServiceTypeTwitter,
             requestMethod: method,
             URL: NSURL(string: "\(TwitterURLPrefix)\(self.requestType)\(jsonExtension)"),
             parameters: self.parameters
         )
-        performTwitterRequest(request, handler: handler)
+        try! performTwitterRequest(request, handler: handler)
     }
     
     // sends the request to Twitter
     // unpackages the JSON response into a Property List
     // and calls handler (not necessarily on the main queue)
 
-    func performTwitterRequest(request: SLRequest, handler: (PropertyList?) -> Void) {
+    func performTwitterRequest(request: SLRequest, handler: (PropertyList?) -> Void) throws {
         if let account = twitterAccount {
             request.account = account
             request.performRequestWithHandler { (jsonResponse, httpResponse, _) in
                 var propertyListResponse: PropertyList?
                 if jsonResponse != nil {
-                    propertyListResponse = NSJSONSerialization.JSONObjectWithData(
+                    propertyListResponse = try! NSJSONSerialization.JSONObjectWithData(
                         jsonResponse,
-                        options: NSJSONReadingOptions.MutableLeaves,
-                        error: nil
-                    )
+                        options: NSJSONReadingOptions.MutableLeaves)
                     if propertyListResponse == nil {
                         let error = "Couldn't parse JSON response."
                         self.log(error)
@@ -163,7 +161,7 @@ public class TwitterRequest
                 if granted {
                     if let account = accountStore.accountsWithAccountType(twitterAccountType)?.last as? ACAccount {
                         twitterAccount = account
-                        self.performTwitterRequest(request, handler: handler)
+                        try! self.performTwitterRequest(request, handler: handler)
                     } else {
                         let error = "Couldn't discover Twitter account type."
                         self.log(error)
@@ -183,7 +181,7 @@ public class TwitterRequest
     
     // modifies parameters in an existing request to create a new one
     
-    private func modifiedRequest(#parametersToChange: Dictionary<String,String>, clearCount: Bool = false) -> TwitterRequest {
+    private func modifiedRequest(parametersToChange parametersToChange: Dictionary<String,String>, clearCount: Bool = false) -> TwitterRequest {
         var newParameters = parameters
         for (key, value) in parametersToChange {
             newParameters[key] = value
@@ -214,7 +212,7 @@ public class TwitterRequest
     // debug println with identifying prefix
     
     private func log(whatToLog: AnyObject) {
-        debugPrintln("TwitterRequest: \(whatToLog)")
+        debugPrint("TwitterRequest: \(whatToLog)", appendNewline: false)
     }
     
     // synchronizes access to self across multiple threads
